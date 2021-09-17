@@ -10002,3 +10002,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+#admin-page {
+  padding-top: 0px;
+}
+
+.rheight {
+  height: 0;
+}
