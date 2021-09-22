@@ -7,6 +7,7 @@ use App\Http\Requests\UsersRequest;
 use App\Models\Photo;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -48,6 +49,7 @@ class AdminUsersController extends Controller
     {
         //
         $input = $request->all();
+
 
         if($file = $request->file('photo_id')){
             
@@ -149,8 +151,21 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+       // User::findOrFail($id)->delete();
+
+       $user = User::findOrFail($id);
+
+        if($user->photo_id != null) {
+            unlink(public_path() . $user->photo->file);
+        }
+
+        $user->delete();
+
+        $request->session()->flash('deleted_user', 'The user has been deleted succesfully');
+
+        return redirect('/admin/users');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminUsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -23,11 +24,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('admin/users', AdminUsersController::class);
+Route::resource('admin/users', AdminUsersController::class)->middleware('admin');
+Route::resource('admin/posts', AdminPostsController::class)->middleware('admin');
 
 Route::get('/admin', function () {
     
     return view('admin.index');
 
-});
+})->name('admin');
   
