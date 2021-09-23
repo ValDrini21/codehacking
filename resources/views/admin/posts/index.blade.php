@@ -26,9 +26,9 @@
             {{-- <td><a href="{{ route('users.edit', $user->id) }}">{{ $user->name }}</a></td> --}}
             <td>{{ $post->user->name }}</td>
             <td>{{ $post->category ? $post->category->name : "Uncategorized"}}</td>
-            <td><div class="img-responsive img-rounded"><img src="{{ $post->photo ? $post->photo->file : "https://place-hold.it/74" }}" alt="" width="84px"></div></td>
-            <td>{{ $post->title }}</td>
-            <td>{{ $post->body }}</td>
+            <td><a href="{{ route('posts.edit', $post->id) }}"><div class="img-responsive img-rounded"><img src="{{ $post->photo ? $post->photo->file : "https://place-hold.it/74" }}" alt="" width="84px"></div></a></td>
+            <td><a href="{{ route('posts.edit', $post->id) }}">{{ $post->title }}</a></td>
+            <td>{{ Str::limit($post->body, 11)  }}</td>
             <td>{{ $post->created_at->diffForHumans() }}</td>
             <td>{{ $post->updated_at->diffForHumans() }}</td>
         </tr>
