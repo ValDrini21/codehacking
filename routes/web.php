@@ -4,6 +4,9 @@ use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminMediasController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\CommentRepliesController;
+use App\Http\Controllers\PostCommentsController;
+use App\Models\CommentReply;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +34,13 @@ Route::resource('admin/posts', AdminPostsController::class)->middleware('admin')
 Route::resource('/admin/categories', AdminCategoriesController::class)->middleware('admin');
 Route::resource('/admin/media', AdminMediasController::class)->middleware('admin');
 // Route::get('/admin/media/upload', [App\Http\Controllers\AdminMediasController::class, 'store'])->name('admin.media.upload')->middleware('admin');
+
+Route::resource('admin/comments', PostCommentsController::class)->middleware('admin');
+Route::resource('admin/comment/replies', CommentRepliesController::class)->middleware('admin');
+
+Route::post('comment/reply', [App\Http\Controllers\CommentRepliesController::class, 'createReply'])->middleware('auth');
+
+Route::get('/post/{id}', [App\Http\Controllers\AdminPostsController::class, 'post'])->name('home.post');
 
 Route::get('/admin', function () {
     

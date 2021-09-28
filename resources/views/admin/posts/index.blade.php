@@ -12,7 +12,9 @@
             <th>Category</th>
             <th>Photo</th>
             <th>Title</th>
-            <th>Body</th>     
+            <th>Body</th>
+            <th>Post</th>
+            <th>Comments</th>     
             <th>Created</th>
             <th>Updated</th>       
         </tr>
@@ -29,6 +31,8 @@
             <td><a href="{{ route('posts.edit', $post->id) }}"><div class="img-responsive img-rounded"><img src="{{ $post->photo ? $post->photo->file : "https://place-hold.it/74" }}" alt="" width="84px"></div></a></td>
             <td><a href="{{ route('posts.edit', $post->id) }}">{{ $post->title }}</a></td>
             <td>{{ Str::limit($post->body, 11)  }}</td>
+            <td><a href="{{ route('home.post', $post->id) }}">View Post</a></td>
+            <td><a href="{{ route('comments.show', $post->id) }}">Comments</a></td>
             <td>{{ $post->created_at->diffForHumans() }}</td>
             <td>{{ $post->updated_at->diffForHumans() }}</td>
         </tr>

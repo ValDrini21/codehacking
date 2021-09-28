@@ -28,4 +28,8 @@ class Post extends Model
     public function photo() {
         return $this->belongsTo('App\Models\Photo');
     }
+
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
 }
