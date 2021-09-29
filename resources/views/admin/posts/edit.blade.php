@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('includes.tinyeditor')
+
 <h1>Edit Post</h1>
 
 <div class="col-sm-3">
@@ -29,7 +31,7 @@
     
             <div class="form-group">
                 {!! Form::label('body', 'Body:') !!}
-                {!! Form::textarea('body', null, ['class' => 'form-control', 'rows' => '5']) !!}
+                {!! Form::textarea('body', null, ['class' => 'form-control', 'rows' => '15']) !!}
             </div>
     
             <div class="form-group">

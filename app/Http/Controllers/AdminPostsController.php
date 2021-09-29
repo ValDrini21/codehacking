@@ -10,6 +10,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class AdminPostsController extends Controller
 {
     /**
@@ -20,7 +21,8 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+       // $posts = Post::all();
+        $posts = Post::paginate(4);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -149,9 +151,13 @@ class AdminPostsController extends Controller
         return redirect('/admin/posts');
     }
 
-    public function post($id) {
+    public function post($slug) {
 
-        $post = Post::findOrFail($id);
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        //$post = Post::findBySlug($slug); <-this did not work
+
+        // dd($post);
 
         $user = $post->user;
 

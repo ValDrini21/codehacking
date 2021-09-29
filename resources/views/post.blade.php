@@ -23,11 +23,12 @@
     <img class="img-responsive" style="width: 100%" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/900x300' }}" alt="">
 
     <hr>
-
-    <!-- Post Content -->
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-    <p>{{ $post->body }}</p>
-
+    <div style="background-color: rgb(245, 242, 238); padding: 3%; border-radius:2%">
+        <!-- Post Content -->
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+        {{-- <p>{{ $post->body }}</p> --}}
+        <p>{!! $post->body !!}</p>
+    </div>
     <hr>
 
     @if (Session::has('comment_message'))
@@ -58,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::submit('Create Post', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Comment', ['class' => 'btn btn-primary']) !!}
         </div>
 
         {!! Form::close() !!}
@@ -68,7 +69,7 @@
 
     @endif
 
-    
+
 
     <!-- Posted Comments -->
 

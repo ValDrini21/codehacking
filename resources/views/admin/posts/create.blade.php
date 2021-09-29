@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('includes.tinyeditor')
+
 <h1>Create Post</h1>
 
 <div class="row">
@@ -32,6 +34,7 @@
         </div>
     {!! Form::close() !!}
 </div>
+
 
 <div class="row">
     @include('includes.form_error')

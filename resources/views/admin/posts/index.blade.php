@@ -31,7 +31,7 @@
             <td><a href="{{ route('posts.edit', $post->id) }}"><div class="img-responsive img-rounded"><img src="{{ $post->photo ? $post->photo->file : "https://place-hold.it/74" }}" alt="" width="84px"></div></a></td>
             <td><a href="{{ route('posts.edit', $post->id) }}">{{ $post->title }}</a></td>
             <td>{{ Str::limit($post->body, 11)  }}</td>
-            <td><a href="{{ route('home.post', $post->id) }}">View Post</a></td>
+            <td><a href="{{ route('home.post', $post->slug) }}">View Post</a></td>
             <td><a href="{{ route('comments.show', $post->id) }}">Comments</a></td>
             <td>{{ $post->created_at->diffForHumans() }}</td>
             <td>{{ $post->updated_at->diffForHumans() }}</td>
@@ -41,5 +41,11 @@
         @endif
     </tbody>
 </table>
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-5">
+        {{ $posts->links('pagination::bootstrap-4') }}
+    </div>
+</div>
 
 @endsection

@@ -48,3 +48,7 @@ Route::get('/admin', function () {
 
 })->name('admin');
   
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
