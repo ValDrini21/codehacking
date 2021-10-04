@@ -139,7 +139,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Valdrin Nasufi - website |codehacking.site| - {{ \Carbon\Carbon::now()->year }} -</p>
+                    <p>Copyright &copy; <a href="https://github.com/ValDrini21">Valdrin Nasufi</a> - website |codehacking.site| - {{ \Carbon\Carbon::now()->year }} -</p>
                 </div>
             </div>
             <!-- /.row -->
