@@ -32,7 +32,9 @@
     <hr>
 
     @if (Session::has('comment_message'))
-        {{ session('comment_message') }}
+        <div class="alert alert-success" role="alert">
+            {{ session('comment_message') }}
+        </div> 
     @endif
 
     <!-- Blog Comments -->
