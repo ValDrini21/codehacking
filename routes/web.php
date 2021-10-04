@@ -42,13 +42,16 @@ Route::post('comment/reply', [App\Http\Controllers\CommentRepliesController::cla
 
 Route::get('/post/{id}', [App\Http\Controllers\AdminPostsController::class, 'post'])->name('home.post');
 
-Route::get('/admin', function () {
+// Route::get('/admin', function () {
     
-    return view('admin.index');
+//     return view('admin.index');
 
-})->name('admin');
+// })->name('admin');
   
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('admin');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+Route::delete('admin/delete/media', [\App\Http\Controllers\AdminMediasController::class, 'deleteMedia']);

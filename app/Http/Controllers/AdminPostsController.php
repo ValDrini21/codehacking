@@ -112,7 +112,6 @@ class AdminPostsController extends Controller
      */
     public function update(PostsEditRequest $request, $id)
     {
-        //
 
         $input = $request->all();
 
@@ -125,6 +124,8 @@ class AdminPostsController extends Controller
             $photo = Photo::create(['file' => $name]);
 
             $input['photo_id'] = $photo->id;
+        } else {
+            $request->except('photo_id');
         }
 
         Auth::user()->posts()->whereId($id)->first()->update($input);

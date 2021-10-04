@@ -27,7 +27,7 @@ class PostsEditRequest extends FormRequest
             //
             'title'       => 'required',
             'category_id' => 'required',
-            'photo_id'    => 'required',
+            'photo_id'    => '',
             'body'        => 'required'
         ];
     }
